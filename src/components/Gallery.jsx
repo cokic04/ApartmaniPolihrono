@@ -4,7 +4,7 @@ import {
   gallerySpavaca1,
   gallerySpavaca2,
   galleryDnevni,
-  gallerySpavaca3,
+  galleryKupatilo,
 } from '../data/images'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -43,9 +43,9 @@ const sobe = [
   },
   {
     id: 6,
-    title: 'Spavaća soba 3',
-    description: 'Udoban bračni krevet',
-    src: gallerySpavaca3,
+    title: 'Kupatilo',
+    description: 'Kupatilo sa tuš kabinom',
+    src: galleryKupatilo,
   },
 ]
 

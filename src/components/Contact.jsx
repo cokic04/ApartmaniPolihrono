@@ -1,6 +1,6 @@
-import { useState, useRef } from 'react'
-import { Send, CheckCircle2 } from 'lucide-react'
-import { contactImg } from '../data/images'
+import { useState, useRef } from "react";
+import { Send, CheckCircle2 } from "lucide-react";
+import { contactImg } from "../data/images";
 
 // ═════════════════════════════════════════════════════════════════════════════
 //  EmailJS integracija — uputstvo
@@ -36,74 +36,68 @@ import { contactImg } from '../data/images'
 // ═════════════════════════════════════════════════════════════════════════════
 
 const PRAZAN_FORM = {
-  ime:      '',
-  email:    '',
-  telefon:  '',
-  dolazak:  '',
-  odlazak:  '',
-  gosti:    '',
-  poruka:   '',
-}
+  ime: "",
+  email: "",
+  telefon: "",
+  dolazak: "",
+  odlazak: "",
+  gosti: "",
+  poruka: "",
+};
 
 export default function Contact() {
-  const formRef               = useRef(null)
-  const [form, setForm]       = useState(PRAZAN_FORM)
-  const [greske, setGreske]   = useState({})
-  const [loading, setLoading] = useState(false)
-  const [poslato, setPoslato] = useState(false)
+  const formRef = useRef(null);
+  const [form, setForm] = useState(PRAZAN_FORM);
+  const [greske, setGreske] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [poslato, setPoslato] = useState(false);
 
   // Validacija
   const validiraj = () => {
-    const g = {}
-    if (!form.ime.trim())
-      g.ime = 'Ime i prezime je obavezno.'
-    if (!form.email.trim())
-      g.email = 'Email adresa je obavezna.'
+    const g = {};
+    if (!form.ime.trim()) g.ime = "Ime i prezime je obavezno.";
+    if (!form.email.trim()) g.email = "Email adresa je obavezna.";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      g.email = 'Unesite ispravnu email adresu.'
-    if (!form.dolazak)
-      g.dolazak = 'Datum dolaska je obavezan.'
-    if (!form.odlazak)
-      g.odlazak = 'Datum odlaska je obavezan.'
+      g.email = "Unesite ispravnu email adresu.";
+    if (!form.dolazak) g.dolazak = "Datum dolaska je obavezan.";
+    if (!form.odlazak) g.odlazak = "Datum odlaska je obavezan.";
     else if (form.dolazak && form.odlazak <= form.dolazak)
-      g.odlazak = 'Datum odlaska mora biti posle dolaska.'
-    if (!form.gosti)
-      g.gosti = 'Odaberite broj gostiju.'
-    return g
-  }
+      g.odlazak = "Datum odlaska mora biti posle dolaska.";
+    if (!form.gosti) g.gosti = "Odaberite broj gostiju.";
+    return g;
+  };
 
   const handleChange = ({ target: { name, value } }) => {
-    setForm((prev) => ({ ...prev, [name]: value }))
-    if (greske[name]) setGreske((prev) => ({ ...prev, [name]: '' }))
-  }
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (greske[name]) setGreske((prev) => ({ ...prev, [name]: "" }));
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const validacioneGreske = validiraj()
+    e.preventDefault();
+    const validacioneGreske = validiraj();
     if (Object.keys(validacioneGreske).length) {
-      setGreske(validacioneGreske)
-      const prvoPolje = Object.keys(validacioneGreske)[0]
-      document.querySelector(`[name="${prvoPolje}"]`)?.focus()
-      return
+      setGreske(validacioneGreske);
+      const prvoPolje = Object.keys(validacioneGreske)[0];
+      document.querySelector(`[name="${prvoPolje}"]`)?.focus();
+      return;
     }
-    setLoading(true)
+    setLoading(true);
 
     // ── DEMO — zamenite ovaj blok sa EmailJS pozivom (vidi uputstvo iznad) ──
     setTimeout(() => {
-      setLoading(false)
-      setPoslato(true)
-      setForm(PRAZAN_FORM)
-    }, 1400)
+      setLoading(false);
+      setPoslato(true);
+      setForm(PRAZAN_FORM);
+    }, 1400);
     // ─────────────────────────────────────────────────────────────────────────
-  }
+  };
 
-  const danas = new Date().toISOString().split('T')[0]
+  const danas = new Date().toISOString().split("T")[0];
 
   return (
     <section id="contact" className="py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-
           {/* Leva kolona */}
           <div className="lg:sticky lg:top-28">
             <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-3">
@@ -115,8 +109,8 @@ export default function Contact() {
               <span className="italic text-accent">savršen odmor</span>
             </h2>
             <p className="text-stone-500 text-base md:text-lg leading-relaxed mb-8">
-              Popunite formular i mi ćemo vam odgovoriti u roku od 24 sata
-              sa svim detaljima o dostupnosti i cenama.
+              Popunite formular i mi ćemo vam odgovoriti u roku od 24 sata sa
+              svim detaljima o dostupnosti i cenama.
             </p>
 
             {/* Slika — menjajte u src/data/images.js → contactImg */}
@@ -129,7 +123,11 @@ export default function Contact() {
 
             {/* Trust badges */}
             <div className="mt-6 flex flex-wrap gap-3">
-              {['Bez naknade za rezervaciju', 'Odgovaramo u roku od 24h', 'Fleksibilni uslovi'].map((badge) => (
+              {[
+                "Bez naknade za rezervaciju",
+                "Odgovaramo u roku od 24h",
+                "Fleksibilni uslovi",
+              ].map((badge) => (
                 <span
                   key={badge}
                   className="bg-cream-100 text-stone-600 text-xs font-medium px-3 py-1.5 rounded-full border border-stone-200"
@@ -155,7 +153,9 @@ export default function Contact() {
                   <h3 className="font-serif text-xl font-semibold text-stone-900">
                     Upit za rezervaciju
                   </h3>
-                  <p className="text-stone-400 text-sm mt-1">Polja označena * su obavezna.</p>
+                  <p className="text-stone-400 text-sm mt-1">
+                    Polja označena * su obavezna.
+                  </p>
                 </div>
 
                 {/* Ime */}
@@ -229,24 +229,29 @@ export default function Contact() {
                     onChange={handleChange}
                     className={inputKls(greske.gosti)}
                   >
-                    <option value="" disabled>Odaberite broj gostiju</option>
-                    {[1, 2, 3, 4, 5, 6].map((n) => (
+                    <option value="" disabled>
+                      Odaberite broj gostiju
+                    </option>
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                       <option key={n} value={n}>
-                        {n} {n === 1 ? 'gost' : n < 5 ? 'gosta' : 'gostiju'}
+                        {n} {n === 1 ? "gost" : n < 5 ? "gosta" : "gostiju"}
                       </option>
                     ))}
                   </select>
                 </Polje>
 
                 {/* Poruka */}
-                <Polje label="Poruka ili posebni zahtevi" greska={greske.poruka}>
+                <Polje
+                  label="Poruka ili posebni zahtevi"
+                  greska={greske.poruka}
+                >
                   <textarea
                     name="poruka"
                     value={form.poruka}
                     onChange={handleChange}
                     placeholder="Napišite nam nešto — posebne potrebe, pitanja, datume..."
                     rows={4}
-                    className={inputKls(greske.poruka) + ' resize-none'}
+                    className={inputKls(greske.poruka) + " resize-none"}
                   />
                 </Polje>
 
@@ -270,7 +275,8 @@ export default function Contact() {
                 </button>
 
                 <p className="text-stone-400 text-xs text-center leading-relaxed">
-                  Vaši podaci se koriste isključivo za odgovor na vaš upit i neće biti deljeni.
+                  Vaši podaci se koriste isključivo za odgovor na vaš upit i
+                  neće biti deljeni.
                 </p>
               </form>
             )}
@@ -278,7 +284,7 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 // ── Pomoćne komponente ────────────────────────────────────────────────────────
@@ -286,7 +292,9 @@ export default function Contact() {
 function Polje({ label, greska, children }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-stone-700 mb-1.5">{label}</label>
+      <label className="block text-sm font-medium text-stone-700 mb-1.5">
+        {label}
+      </label>
       {children}
       {greska && (
         <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1">
@@ -294,26 +302,37 @@ function Polje({ label, greska, children }) {
         </p>
       )}
     </div>
-  )
+  );
 }
 
 function inputKls(greska) {
   return [
-    'w-full px-4 py-3 rounded-xl border text-stone-800 text-sm placeholder:text-stone-300',
-    'focus:outline-none focus:ring-4 transition-all',
+    "w-full px-4 py-3 rounded-xl border text-stone-800 text-sm placeholder:text-stone-300",
+    "focus:outline-none focus:ring-4 transition-all",
     greska
-      ? 'border-red-400 bg-red-50/50 focus:ring-red-200 focus:border-red-400'
-      : 'border-stone-200 bg-stone-50 focus:ring-accent/15 focus:border-accent',
-  ].join(' ')
+      ? "border-red-400 bg-red-50/50 focus:ring-red-200 focus:border-red-400"
+      : "border-stone-200 bg-stone-50 focus:ring-accent/15 focus:border-accent",
+  ].join(" ");
 }
 
 function Spinner() {
   return (
     <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+      />
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8v8H4z"
+      />
     </svg>
-  )
+  );
 }
 
 function UspehKartica({ onReset }) {
@@ -326,8 +345,8 @@ function UspehKartica({ onReset }) {
         Upit je primljen!
       </h3>
       <p className="text-stone-500 leading-relaxed mb-8 max-w-sm mx-auto">
-        Hvala na interesovanju! Odgovorićemo vam u roku od 24 sata
-        sa svim informacijama o dostupnosti i cenama.
+        Hvala na interesovanju! Odgovorićemo vam u roku od 24 sata sa svim
+        informacijama o dostupnosti i cenama.
       </p>
       <button
         onClick={onReset}
@@ -336,5 +355,5 @@ function UspehKartica({ onReset }) {
         ← Pošalji novi upit
       </button>
     </div>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { ChevronDown } from 'lucide-react'
-import { heroImg } from '../data/images'
+import { ChevronDown } from "lucide-react";
+import { heroImg } from "../data/images";
 
 export default function Hero() {
   return (
@@ -20,17 +20,16 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 sm:px-6">
-
         <p
           className="text-accent-light text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase mb-5 animate-fade-in-up"
-          style={{ animationDelay: '0.1s' }}
+          style={{ animationDelay: "0.1s" }}
         >
           Dobrodošli u Apartmane Polihrono
         </p>
 
         <h1
           className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.1] mb-6 animate-fade-in-up"
-          style={{ animationDelay: '0.25s' }}
+          style={{ animationDelay: "0.25s" }}
         >
           Vaš savršen odmor
           <br />
@@ -39,15 +38,15 @@ export default function Hero() {
 
         <p
           className="text-white/80 text-base md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up"
-          style={{ animationDelay: '0.4s' }}
+          style={{ animationDelay: "0.4s" }}
         >
-          Na samo 80m od mora nudimo vam savršen smeštaj sa 2 spavaće sobe,
+          Na samo 100m od mora nudimo vam savršen smeštaj sa 2 spavaće sobe,
           dnevnim boravkom i potpuno opremljenom kuhinjom.
         </p>
 
         <div
           className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up"
-          style={{ animationDelay: '0.55s' }}
+          style={{ animationDelay: "0.55s" }}
         >
           <a
             href="#contact"
@@ -66,16 +65,20 @@ export default function Hero() {
         {/* Quick stats */}
         <div
           className="mt-16 flex flex-wrap items-center justify-center gap-10 animate-fade-in-up"
-          style={{ animationDelay: '0.7s' }}
+          style={{ animationDelay: "0.7s" }}
         >
           {[
-            { value: '80m',  label: 'od mora' },
-            { value: '2',    label: 'spavaće sobe' },
-            { value: '5+',   label: 'godina iskustva' },
+            { value: "100m", label: "od mora" },
+            { value: "2", label: "spavaće sobe" },
+            { value: "5+", label: "godina iskustva" },
           ].map(({ value, label }) => (
             <div key={label} className="text-center">
-              <p className="text-3xl font-bold font-serif text-accent-light">{value}</p>
-              <p className="text-white/55 text-xs mt-1 tracking-widest uppercase">{label}</p>
+              <p className="text-3xl font-bold font-serif text-accent-light">
+                {value}
+              </p>
+              <p className="text-white/55 text-xs mt-1 tracking-widest uppercase">
+                {label}
+              </p>
             </div>
           ))}
         </div>
@@ -90,5 +93,5 @@ export default function Hero() {
         <ChevronDown size={30} />
       </a>
     </section>
-  )
+  );
 }
