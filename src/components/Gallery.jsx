@@ -90,9 +90,9 @@ export default function Gallery() {
 
               {/* Card label — slides up on hover */}
               <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-                <div className="bg-white/96 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-stone-100">
-                  <h3 className="font-semibold text-stone-900">{soba.title}</h3>
-                  <p className="text-stone-500 text-xs mt-1">{soba.description}</p>
+                <div className="bg-black/40 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <h3 className="font-semibold text-white">{soba.title}</h3>
+                  <p className="text-stone-300 text-xs mt-1">{soba.description}</p>
                 </div>
               </div>
             </article>

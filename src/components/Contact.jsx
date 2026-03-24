@@ -1,39 +1,16 @@
 import { useState, useRef } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
 import { contactImg } from "../data/images";
+import emailjs from "@emailjs/browser";
 
-// ═════════════════════════════════════════════════════════════════════════════
-//  EmailJS integracija — uputstvo
 // ─────────────────────────────────────────────────────────────────────────────
-//  1. Instalirajte paket:
-//       npm install @emailjs/browser
-//
-//  2. Dodajte import na vrhu fajla:
-//       import emailjs from '@emailjs/browser'
-//
-//  3. Registrujte se na https://www.emailjs.com/ (besplatno do 200 mejlova/mes)
-//     • Napravite Service (npr. Gmail)
-//     • Napravite Email Template — koristite ove promenljive:
-//         {{ime}}  {{email}}  {{telefon}}  {{dolazak}}  {{odlazak}}
-//         {{gosti}}  {{poruka}}
-//     • Kopirajte Service ID, Template ID i Public Key
-//
-//  4. Zamenite blok "// ── DEMO ──" u handleSubmit() sledećim kodom:
-//
-//       emailjs
-//         .sendForm(
-//           'VAŠ_SERVICE_ID',   // npr. 'service_abc123'
-//           'VAŠ_TEMPLATE_ID',  // npr. 'template_xyz789'
-//           formRef.current,
-//           'VAŠ_PUBLIC_KEY'    // npr. 'AbCdEfGhIj...'
-//         )
-//         .then(() => setSubmitted(true))
-//         .catch((err) => {
-//           console.error('EmailJS greška:', err)
-//           alert('Greška pri slanju. Molimo kontaktirajte nas telefonom.')
-//         })
-//         .finally(() => setLoading(false))
-// ═════════════════════════════════════════════════════════════════════════════
+//  Paste your three EmailJS values below (from emailjs.com dashboard)
+// ─────────────────────────────────────────────────────────────────────────────
+const EMAILJS_SERVICE_ID  = "service_yw1fato";
+const EMAILJS_TEMPLATE_ID = "template_5qubry4";
+const EMAILJS_PUBLIC_KEY  = "rTzUHx-yXkh7b61zE";
+// ─────────────────────────────────────────────────────────────────────────────
+
 
 const PRAZAN_FORM = {
   ime: "",
@@ -83,13 +60,14 @@ export default function Contact() {
     }
     setLoading(true);
 
-    // ── DEMO — zamenite ovaj blok sa EmailJS pozivom (vidi uputstvo iznad) ──
-    setTimeout(() => {
-      setLoading(false);
-      setPoslato(true);
-      setForm(PRAZAN_FORM);
-    }, 1400);
-    // ─────────────────────────────────────────────────────────────────────────
+    emailjs
+      .sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current, EMAILJS_PUBLIC_KEY)
+      .then(() => {
+        setPoslato(true);
+        setForm(PRAZAN_FORM);
+      })
+      .catch(() => alert("Greška pri slanju. Molimo kontaktirajte nas telefonom."))
+      .finally(() => setLoading(false));
   };
 
   const danas = new Date().toISOString().split("T")[0];

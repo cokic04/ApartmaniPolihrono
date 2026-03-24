@@ -38,7 +38,7 @@ export default function Footer() {
               </div>
             </a>
             <p className="text-stone-500 text-sm leading-relaxed max-w-xs mb-6">
-              Savršen smeštaj za vaš odmor u Polihronuu, Grčka. Na samo 100m od
+              Savršen smeštaj za vaš odmor u Polihronu, Grčka. Na samo 100m od
               mora — toplo, porodično i udobno.
             </p>
 

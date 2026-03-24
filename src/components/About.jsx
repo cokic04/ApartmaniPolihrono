@@ -53,7 +53,7 @@ export default function About() {
             </h2>
 
             <p className="text-stone-600 text-base md:text-lg leading-relaxed mb-5">
-              Tražite savršen smeštaj za vaš odmor u Polihronuu? Na samo 100m od
+              Tražite savršen smeštaj za vaš odmor u Polihronu? Na samo 100m od
               mora nudimo vam savršen smeštaj sa 2 spavaće sobe, dnevnim
               boravkom i potpuno opremljenom kuhinjom.
             </p>

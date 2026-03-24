@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(find d:/react/ApartmentProject -name *.jpg -o -name *.jpeg -o -name *.png -o -name *.webp -o -name *.avif)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(npm install:*)"
     ]
   }
 }

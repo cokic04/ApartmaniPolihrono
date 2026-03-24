@@ -33,7 +33,7 @@ export default function Hero() {
         >
           Vaš savršen odmor
           <br />
-          <span className="italic text-accent-light">u Polihronuu</span>
+          <span className="italic text-accent-light">u Polihronu</span>
         </h1>
 
         <p
