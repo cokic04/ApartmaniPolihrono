@@ -20,7 +20,7 @@ const dugmad = [
   },
   {
     label: 'Viber',
-    href: `viber://chat?number=%2B${BROJ}`,
+    href: `viber://chat?number=${BROJ}`,
     color: 'bg-[#7360F2] hover:bg-[#5e4dd6]',
     shadow: 'hover:shadow-[0_4px_20px_rgba(115,96,242,0.45)]',
     icon: (

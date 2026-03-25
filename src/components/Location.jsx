@@ -18,9 +18,9 @@ export default function Location() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {/* Google Maps embed */}
-          <div className="lg:col-span-2 rounded-3xl overflow-hidden shadow-xl h-72 md:h-[440px]">
+          <div className="lg:col-span-2 rounded-3xl overflow-hidden shadow-xl h-72 lg:h-full">
             {/*
               ── Google Maps embed ──────────────────────────────────────────────
               Da biste dobili tačan embed link:
@@ -34,7 +34,7 @@ export default function Location() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.2!2d23.3784!3d39.9778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a629224889f0b5%3A0x6f044aaff45aa289!2sVila%20Rea%20Magda!5e0!3m2!1ssr!2srs!4v1711234567890!5m2!1ssr!2srs"
               width="100%"
               height="100%"
-              style={{ border: 0 }}
+              style={{ border: 0, display: 'block' }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
