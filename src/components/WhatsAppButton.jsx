@@ -1,10 +1,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
 //  WhatsApp dugme — donji desni ugao
-//  Broj: +381 68 031 77 242
-//  Format za wa.me: bez + i bez razmaka → 3816803177242
+//  Broj: +43 680 317 7242
+//  Format za wa.me: bez + i bez razmaka → 436803177242
 // ─────────────────────────────────────────────────────────────────────────────
 
-const WHATSAPP_BROJ    = '3816803177242'
+const WHATSAPP_BROJ    = '436803177242'
 const WHATSAPP_PORUKA  = 'Zdravo! Zanima me smeštaj u Apartmanima Polihrono.'
 
 export default function WhatsAppButton() {
