@@ -1,10 +1,9 @@
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 export default function Location() {
   return (
     <section id="location" className="py-20 md:py-28 bg-cream-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-3">
@@ -14,13 +13,12 @@ export default function Location() {
             Lokacija
           </h2>
           <p className="text-stone-500 text-base md:text-lg leading-relaxed">
-            Polihrono, poluostrvo Halkidiki, Grčka — idealna lokacija za nezaboravan
-            letnji odmor uz more.
+            Polihrono, poluostrvo Halkidiki, Grčka — idealna lokacija za
+            nezaboravan letnji odmor uz more.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-
           {/* Google Maps embed */}
           <div className="lg:col-span-2 rounded-3xl overflow-hidden shadow-xl h-72 md:h-[440px]">
             {/*
@@ -52,9 +50,15 @@ export default function Location() {
             />
             <InfoCard
               icon={Phone}
-              title="Telefon"
+              title="Telefon (SRB)"
               content="+381 68 031 77 242"
               href="tel:+3816803177242"
+            />
+            <InfoCard
+              icon={Phone}
+              title="Rezervacije (Viber / WhatsApp)"
+              content="+43 680 317 7242"
+              href="tel:+436803177242"
             />
             <InfoCard
               icon={Mail}
@@ -78,11 +82,11 @@ export default function Location() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function InfoCard({ icon: Icon, title, content, href }) {
-  const Tag = href ? 'a' : 'div'
+  const Tag = href ? "a" : "div";
   return (
     <Tag
       {...(href ? { href } : {})}
@@ -95,8 +99,10 @@ function InfoCard({ icon: Icon, title, content, href }) {
         <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">
           {title}
         </p>
-        <p className="text-stone-800 font-medium text-sm leading-relaxed">{content}</p>
+        <p className="text-stone-800 font-medium text-sm leading-relaxed">
+          {content}
+        </p>
       </div>
     </Tag>
-  )
+  );
 }

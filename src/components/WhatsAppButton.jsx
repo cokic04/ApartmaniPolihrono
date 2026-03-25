@@ -1,40 +1,59 @@
 // ─────────────────────────────────────────────────────────────────────────────
-//  WhatsApp dugme — donji desni ugao
-//  Broj: +43 680 317 7242
-//  Format za wa.me: bez + i bez razmaka → 436803177242
+//  Floating kontakt dugmad — donji desni ugao
+//  WhatsApp + Viber → austrijski broj: +43 680 317 7242
 // ─────────────────────────────────────────────────────────────────────────────
 
-const WHATSAPP_BROJ    = '436803177242'
-const WHATSAPP_PORUKA  = 'Zdravo! Zanima me smeštaj u Apartmanima Polihrono.'
+const BROJ   = '436803177242'
+const PORUKA = encodeURIComponent('Zdravo! Zanima me smeštaj u Apartmanima Polihrono.')
 
-export default function WhatsAppButton() {
-  const url = `https://wa.me/${WHATSAPP_BROJ}?text=${encodeURIComponent(WHATSAPP_PORUKA)}`
-
-  return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Pišite nam na WhatsApp"
-      title="WhatsApp — Apartmani Polihrono"
-      className="
-        fixed bottom-6 right-6 z-50
-        w-14 h-14 rounded-full
-        bg-[#25D366] hover:bg-[#1ebe5d]
-        text-white shadow-lg hover:shadow-xl
-        flex items-center justify-center
-        transition-all duration-200
-        hover:scale-110 hover:-translate-y-0.5
-      "
-    >
-      <svg
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        className="w-7 h-7"
-        aria-hidden="true"
-      >
+const dugmad = [
+  {
+    label: 'WhatsApp',
+    href: `https://wa.me/${BROJ}?text=${PORUKA}`,
+    color: 'bg-[#25D366] hover:bg-[#1ebe5d]',
+    shadow: 'hover:shadow-[0_4px_20px_rgba(37,211,102,0.45)]',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" aria-hidden="true">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
       </svg>
-    </a>
+    ),
+  },
+  {
+    label: 'Viber',
+    href: `viber://chat?number=%2B${BROJ}`,
+    color: 'bg-[#7360F2] hover:bg-[#5e4dd6]',
+    shadow: 'hover:shadow-[0_4px_20px_rgba(115,96,242,0.45)]',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" aria-hidden="true">
+        <path d="M11.997 0C5.375 0 0 5.373 0 11.997c0 2.895.99 5.565 2.639 7.68L.916 23.09l3.56-1.686A11.94 11.94 0 0011.997 24C18.62 24 24 18.625 24 11.997 24 5.373 18.62 0 11.997 0zm5.93 16.27c-.23.648-.966 1.188-1.687 1.343-.45.097-.94.175-2.733-.587-2.302-.966-3.785-3.303-3.9-3.455-.112-.152-.945-1.257-.945-2.397 0-1.14.598-1.703.81-1.934.212-.23.462-.288.617-.288.154 0 .308.001.443.008.142.007.334-.054.523.399.193.46.655 1.598.712 1.714.058.116.097.252.02.404-.077.152-.116.248-.23.38-.115.134-.242.298-.346.4-.115.115-.234.24-.101.47.134.23.594.978 1.276 1.584.877.78 1.616 1.022 1.846 1.137.23.115.365.096.499-.058.135-.154.577-.674.731-.904.154-.23.308-.192.52-.115.21.077 1.347.635 1.578.75.23.115.385.173.442.27.058.096.058.557-.172 1.079z" />
+      </svg>
+    ),
+  },
+]
+
+export default function FloatingButtons() {
+  return (
+    <div className="fixed bottom-6 right-5 z-50 flex flex-col gap-3">
+      {dugmad.map(({ label, href, color, shadow, icon }) => (
+        <a
+          key={label}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${label} — Apartmani Polihrono`}
+          title={label}
+          className={`
+            w-13 h-13 w-[52px] h-[52px] rounded-full
+            ${color} ${shadow}
+            text-white shadow-md
+            flex items-center justify-center
+            transition-all duration-200
+            hover:scale-110 hover:-translate-y-0.5
+          `}
+        >
+          {icon}
+        </a>
+      ))}
+    </div>
   )
 }
