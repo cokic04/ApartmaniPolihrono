@@ -51,8 +51,8 @@ export default function Location() {
             <InfoCard
               icon={Phone}
               title="Telefon (SRB)"
-              content="+381 68 031 77 242"
-              href="tel:+3816803177242"
+              content="+381 63 747 4559"
+              href="tel:+381637474559"
             />
             <InfoCard
               icon={Phone}
